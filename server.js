@@ -11,13 +11,17 @@ const cloudinary = require('cloudinary').v2; // Import Cloudinary v2 SDK
 // This MUST be called *before* accessing process.env variables for configurations.
 dotenv.config();
 
+// ... (other imports like express, mongoose, dotenv, cors) ...
+const cloudinary = require('cloudinary').v2;
+
+dotenv.config(); // This line loads your .env file variables into process.env
+
 // --- Cloudinary Configuration ---
-// This configures the Cloudinary SDK with your account credentials.
-// It uses environment variables (loaded by dotenv) to keep sensitive info secure.
+// This block correctly accesses the variables from process.env
 cloudinary.config({
-  CLOUDINARY_CLOUD_NAME=your_cloud_name_here
-CLOUDINARY_API_KEY=your_api_key_here          # <--- THIS IS THE KEY NAME
-CLOUDINARY_API_SECRET=your_api_secret_here
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME, // Correct way to access from .env
+    api_key: process.env.CLOUDINARY_API_KEY,       // Correct way to access from .env
+    api_secret: process.env.CLOUDINARY_API_SECRET  // Correct way to access from .env
 });
 // --- End Cloudinary Configuration ---
 
