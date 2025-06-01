@@ -34,10 +34,12 @@ const PORT = process.env.PORT || 3000;
 
 // --- Middleware Setup ---
 // 1. CORS Middleware:
-//    Enables Cross-Origin Resource Sharing. This allows your frontend (e.g., on localhost:5500)
-//    to make requests to your backend (e.g., on localhost:3000).
-//    For production, it's safer to restrict `origin` to your specific frontend domain.
-app.use(cors());
+//    Enables Cross-Origin Resource Sharing. This allows your frontend (e.g., on localhost:5500)
+//    to make requests to your backend (e.g., on localhost:3000).
+//    For production, it's safer to restrict `origin` to your specific frontend domain.
+app.use(cors({
+  origin: '*' // <--- THIS LINE IS ADDED/MODIFIED TO ALLOW ALL ORIGINS FOR TESTING
+}));
 
 // 2. Express JSON Body Parser Middleware:
 //    Parses incoming request bodies with JSON payloads (e.g., for non-file data like title, description).
